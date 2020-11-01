@@ -48,19 +48,23 @@ function Circle(x,y,dx,dy,radius) {
   }
 
   this.Collision = function() {
-    for(var i=0;i<50;i++){
+    for(var i=0;i<100;i++){
       if(this.x!=circleArray[i].x && this.y!=circleArray[i].y && this.dx!=circleArray[i].dx && this.dy!=circleArray[i].dy){
         distance_x=circleArray[i].x - this.x;
         distance_y=circleArray[i].y - this.y;
         distance=distance_x*distance_x + distance_y * distance_y;
         radius_sum=(circleArray[i].radius+this.radius) * (circleArray[i].radius+this.radius);
+        length=Math.sqrt(distance) || 1;
+        unit_x=distance_x/length;
+        unit_y=distance_y/length;
       //console.log("distance = "+distance);
       if(distance<=radius_sum && distance!=NaN){
-        
-        this.dx=-this.dx;
-        this.dy=-this.dy;
-        circleArray[i].dx=-circleArray[i].dx;
-        circleArray[i].dy=-circleArray[i].dy;
+        circleArray[i].x=this.x+ ((circleArray[i].radius+this.radius)+1) * unit_x;
+        circleArray[i].y=this.y+ ((circleArray[i].radius+this.radius)+1) * unit_y;
+        this.dx=-(this.dx * unit_x);
+        this.dy=-(this.dy * unit_y);
+        circleArray[i].dx=-(circleArray[i].dx * unit_x);
+        circleArray[i].dy=-(circleArray[i].dy * unit_y);
       }
     }
   }
@@ -97,7 +101,7 @@ function Circle(x,y,dx,dy,radius) {
 var circleArray = [];
 
 function init(){
-for(var i=0;i<50;i++){
+for(var i=0;i<100;i++){
     var x=Math.random() * (window.innerWidth - radius*2) + radius;
     var y=Math.random() * (window.innerHeight - radius*2) + radius;
     var dx=(Math.random()-0.5)*4;
