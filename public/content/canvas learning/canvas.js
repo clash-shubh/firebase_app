@@ -2,6 +2,8 @@ var canvas=document.querySelector('canvas');
 canvas.width=window.innerWidth-5;
 canvas.height=window.innerHeight-5;
 var c=canvas.getContext('2d');
+var numberOfParticles=500;
+var maxSpeed=2;
 
 var mouse= {
   x: undefined,
@@ -33,9 +35,10 @@ function Circle(x,y,dx,dy,radius) {
   this.y=y;
   this.dx = dx;
   this.dy = dy;
-  this.radius = 20;
+  this.radius = 10;
   this.min=this.radius;
   this.color= colorArray[Math.floor(Math.random() * colorArray.length)];
+  this.isColliding=false;
 
 
   this.draw = function() {
@@ -48,20 +51,34 @@ function Circle(x,y,dx,dy,radius) {
   }
 
   this.Collision = function() {
-    for(var i=0;i<50;i++){
-      if(this.x!=circleArray[i].x && this.y!=circleArray[i].y && this.dx!=circleArray[i].dx && this.dy!=circleArray[i].dy){
-        distance_x=circleArray[i].x - this.x;
-        distance_y=circleArray[i].y - this.y;
-        distance=distance_x*distance_x + distance_y * distance_y;
-        radius_sum=(circleArray[i].radius+this.radius) * (circleArray[i].radius+this.radius);
+    for(var i=0;i<numberOfParticles;i++){
+      if(this.x!=circleArray[i].x && this.y!=circleArray[i].y && this.dx!=circleArray[i].dx && this.dy!=circleArray[i].dy && this.isColliding==false){
+        this.isColliding=true;
+        circleArray[i].isColliding=true;
+        var distance_vector={x:this.x - circleArray[i].x,y:this.y - circleArray[i].y};
+        var distance=Math.sqrt((distance_vector.x*distance_vector.x) + (distance_vector.y * distance_vector.y));
+        var radius_sum=circleArray[i].radius+this.radius;
+        var unit_vectors={x:distance_vector.x/distance,y:distance_vector.y/distance};
+        var relativeVelocity={dx:this.dx-circleArray[i].dx,dy:this.dy-circleArray[i].dy};
       //console.log("distance = "+distance);
       if(distance<=radius_sum && distance!=NaN){
-        
-        this.dx=-this.dx;
-        this.dy=-this.dy;
-        circleArray[i].dx=-circleArray[i].dx;
-        circleArray[i].dy=-circleArray[i].dy;
+        //circleArray[i].x=this.x+ ((circleArray[i].radius+this.radius)+1) * unit_vectors.x;
+        //circleArray[i].y=this.y+ ((circleArray[i].radius+this.radius)+1) * unit_vectors.y;
+        let speed=relativeVelocity.dx*unit_vectors.x+relativeVelocity.dy*unit_vectors.y;
+        if(speed>maxSpeed){
+          speed=maxSpeed;
+        }
+        if(speed>0){
+          this.dx=speed*unit_vectors.x;
+          this.dy=speed*unit_vectors.y;
+          circleArray[i].dx=-speed*unit_vectors.x;
+          circleArray[i].dy=-speed*unit_vectors.y;
+        }
       }
+    }
+    else{
+      this.isColliding=false;
+      circleArray[i].isColliding=false;
     }
   }
   }
@@ -97,9 +114,9 @@ function Circle(x,y,dx,dy,radius) {
 var circleArray = [];
 
 function init(){
-for(var i=0;i<50;i++){
-    var x=Math.random() * (window.innerWidth - radius*2) + radius;
-    var y=Math.random() * (window.innerHeight - radius*2) + radius;
+for(var i=0;i<numberOfParticles;i++){
+    var x=Math.random() * (window.innerWidth - maxRadius*2) + maxRadius;
+    var y=Math.random() * (window.innerHeight - maxRadius*2) + maxRadius;
     var dx=(Math.random()-0.5)*4;
     var dy=(Math.random()-0.5)*4;
     var radius=10;
@@ -118,4 +135,6 @@ function animate(){
   requestAnimationFrame(animate);
 }
 init();
+console.log("init called!!!")
+console.log(circleArray[0])
 animate();
