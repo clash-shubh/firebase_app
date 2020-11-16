@@ -3,78 +3,126 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>shubh</title>
+    <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src = "../functions/index.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="container.css">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.0.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.0.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-performance.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+      <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Arvo|Cagliostro|Dancing+Script|Dosis|Gloria+Hallelujah|IBM+Plex+Sans+Condensed|Indie+Flower|Josefin+Sans|Karla|Lobster|Mina|Nanum+Gothic|Open+Sans|Pacifico|Roboto|Roboto+Condensed|Shadows+Into+Light|Signika|Yanone+Kaffeesatz" rel="stylesheet">
   </head>
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup UPDATED!!</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <header>
+
+      <nav>
+        <div class="menu-icon">
+        <i class="fa fa-bars fa-2x"></i>
+      </div>
+      <div class="logo">
+          <div class="logo-img">
+          <img src="img/sb.png" height="60px" width="70px">
+          </div>
+          <div class="logo-desc">Shubham Bhawsar</div>
+
+
+      </div>
+
+
+
+
+        <div class="menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact </a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </header>
+
+<div class="container">
+    <div class="container-topic">
+        My Work
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+<hr class="hr">
+    <div class="box-container">
+        <div class="box-img">
+            <img src="img/circular.png" width="90%">
+        </div>
+        <div class="box-desc">
+            <p>Circulating particles that follows your mouse around,HTML5 canvas and javascript based simple yet</p>
+            <a href="content/canvas_circular/dist/index.html"><button class="btn">View Working Model</button></a>
+        </div>
+        </div>
+        <div class="box-container">
+        <div class="box-img">
+            <img src="img/snowy_mouse.png" width="90%">
+        </div>
+        <div class="box-desc">
+            <p>A simulation of snowy weather drawn using javascript and HTML5, beware snow does not like a mouse pointer around itself</p>
+            <a href="content/canvas-snowy/dist/index.html"><button class="btn">View Working Model</button></a>
+        </div>
+            </div>
+            <div class="box-container">
+        <div class="box-img">
+            <img src="img/fireworks.png" width="90%">
+        </div>
+        <div class="box-desc">
+        <p>simulation of colorfull fireworks in html5 canvas and javascript</p>
+            <a href="content/fireworks/dist/index.html"><button class="btn">View Working Model</button></a>
+        </div>
+                </div>
+                <div class="box-container">
+        <div class="box-img">
+            <img src="img/equilizer.png" width="90%">
+        </div>
+        <div class="box-desc">
+        <p>generating particles from the bottom of the screen and destroying them once they reach the topmost point in flight.</p>
+            <a href="content/equilizer/dist/index.html"><button class="btn">View Working Model</button></a>
+        </div>
+    </div>
+    <div class="box-container">
+        <div class="box-img">
+            <img src="img/sprite.png" width="90%">
+        </div>
+        <div class="box-desc">
+        <p>Basic Sprite animation with concepts of changing frames to stimulate mmovement, responses to key up, right and left.</p>
+            <a href="content/game/animation.html"><button class="btn">View Working Model</button></a>
+        </div>
+    </div>
+</div>
+</div>
 
+
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      //Menu Toggle Button
+        $(document).ready(function() {
+          $(".menu-icon").on("click",function() {
+                $("nav ul").toggleClass("showing");
+          })
+        })
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+
+      //Scrolling Effect
+        $(window).on("scroll",function() {
+            if($(window).scrollTop()){
+                $("nav").addClass('black');
+            }
+            else{
+              $('nav').removeClass('black');
+            }
+        })
+        console.log(Firebase);
+        var ref = Firebase.database();
+
+console.log(ref);
     </script>
   </body>
 </html>
